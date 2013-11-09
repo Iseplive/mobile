@@ -1,0 +1,28 @@
+{
+  "name": "mobile",
+  "version": "1.0.1",
+  "description": "ISEPLive mobile site",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Iseplive/mobile.git"
+  },
+  "author": "Philippe VAZ",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/Iseplive/mobile/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-compass": "~0.6.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}
