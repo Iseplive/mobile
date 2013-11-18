@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('mobile').config(['$httpProvider',
-  function($httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-    $httpProvider.defaults.headers.post["Content-Type"] = "multipart/form-data";
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-  }]);
+angular.module('config', []).service('Config', function () {
+    var conf = {
+      apiUri: 'http://rest.iseplive.localhost/'
+    };
+    return conf;
+  });
 

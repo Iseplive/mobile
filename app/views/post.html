@@ -1,0 +1,52 @@
+<div id="posts">
+  <div ng-repeat="post in posts | orderBy: '-time'">
+    <div class="story">
+      <div class="head">
+        <i class="icon-official" ng-if="post.official" title="Officiel"></i>
+        <img width="60" height="60" alt="avatar" ng-src="{{post.avatar_url}}" />
+        <p class="name">
+          {{post.official === "1" ? post.group_name : (post.firstname + ' ' + post.lastname)}}
+        </p>
+        <p class="hint" ng-switch="post.category_id">
+          <span ng-switch-when="1">Photos: {{post.attachments_nb_photos}}</span>
+          <span ng-switch-when="2">Vidéos</span>
+          <span ng-switch-when="3">Journaux</span>
+          <span ng-switch-when="10">Gazettes</span>
+          <span ng-switch-when="4">Podcasts</span>
+          <span ng-switch-default></span>
+        </p>
+        <p class="hint">
+          {{post.time * 1000 | date: 'EEE dd MMM à HH:mm'}}
+        </p>
+      </div>
+      <div class="contents" ng-bind-html="post.message"></div>
+
+      <div class="attachment">
+        <span ng-if="post.event" class="event">
+          <span class="icon-calendar bold">{{post.event.title}}</span>
+          <span class="hint">{{post.event.date_start | eventDate : post.event.date_end}}</span>
+        </span>
+        <span ng-repeat="attach in post.attachments">
+          <img ng-if="attach.ext === 'jpg'" width="60" height="60" alt="photo" ng-src="{{attach.thumb}}" />
+
+          <a ng-if="attach.ext === 'pdf'" href="{{attach.url}}" class="icon-pdf" target="_blank">{{attach.name}}</a>
+
+          <div ng-if="attach.ext === 'mp4'" class="video">
+            <video class="videoPlayer" width="100%" controls poster="{{attach.thumb}}">
+              <source ng-src="{{attach.url}}" type="video/mp4" />
+            </video>
+          </div>
+        </span>
+      </div>
+
+      <div class="meta">
+        <div class="icon-like_link link"></div>
+        <div class="count">
+          <span class="icon-comment">{{post.comments ? post.comments.length : 0}}</span>
+          <span class="icon-like">{{post.likes ? post.likes.users[0].length : 0}}</span>
+        </div>
+        <div class="icon-arrow_next link"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -30,14 +30,13 @@
 
 #menu
   position: fixed
-  width: 260px
+  width: 220px
   top: 0
   left: 0
   height: 100%
   background-color: #1A2E5A
   > header
     padding: 0 8px
-    width: 260px
     height: 43px
     +background-image(linear-gradient(#2a3a59, #162138))
     border-bottom: 1px solid #000
@@ -67,32 +66,10 @@
     font-size: 16px
     color: #C4CCDA
     +text-shadow(0 1px 0 rgba(0, 0, 0, .6))
-    img
-      vertical-align: middle
-      display: block
-      float: left
-      margin: 4px 5px 0 0
-    .count
-      position: absolute
-      right: 10px
-      top: 15px
-      +background-image(linear-gradient(#3E485E, #323A4D))
-      border-top: 1px solid #505A63
-      +box-shadow(0 1px 2px rgba(0, 0, 0, .4))
-      color: #BFC5D2
-      padding: 1px 3px 3px 4px
-      display: inline-block
-      line-height: 12px
-      min-width: 11px
-      text-align: center
-      font-weight: bold
-      font-size: 12px
-      +text-shadow(0 1px 0 rgba(0, 0, 0, .6))
-    #copy
-      padding: 10px 8px
-      font-size: 14px
-      line-height: 18px
-    #copy p
-      font-weight: 100
-    &.active
+    background-position: 10px 8px
+    &:active
       background-color: #08183D
+    a
+      display: block
+      padding: 0 0 0 50px
+

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" ng-app="mobile">
+<html lang="fr" ng-app="mobile" data-ng-controller="MainCtrl">
 	<head>
 		<meta charset="utf-8">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -7,33 +7,54 @@
 		<meta name="format-detection" content="telephone=no" />
 		<meta name="HandheldFriendly" content="true" />
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1.0, user-scalable = no, maximum-scale=1.0, minimum-scale=1.0">
-		
+
 		<title ng-bind="$root.title">Iseplive</title>
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
 
 		<link rel="stylesheet" type="text/css" href="styles/main.css">
+    <script>
+      /* grunticon Stylesheet Loader | https://github.com/filamentgroup/grunticon | (c) 2012 Scott Jehl, Filament Group, Inc. | MIT license. */
+      window.grunticon=function(e){if(e&&3===e.length){var t=window,n=!(!t.document.createElementNS||!t.document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||window.opera&&-1===navigator.userAgent.indexOf("Chrome")),o=function(o){var r=t.document.createElement("link"),a=t.document.getElementsByTagName("script")[0];r.rel="stylesheet",r.href=e[o&&n?0:o?1:2],a.parentNode.insertBefore(r,a)},r=new t.Image;r.onerror=function(){o(!1)},r.onload=function(){o(1===r.width&&1===r.height)},r.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="}};
+      grunticon( [ "img/icons/icons.data.svg.css", "img/icons/icons.data.png.css", "img/icons/icons.fallback.css" ] );
+		</script>
+    <noscript><link href="img/icons/icons.fallback.css" rel="stylesheet"></noscript>
 
 	</head>
 	<body>
 		<div id="sp-nav">
-			<div ng-if="$root.setMenu" ng-include="'views/menus/left-menu.html'"></div>
+			<div ng-if="$root.setMenu" ng-include="'views/commons/left-menu.html'"></div>
 		</div>
 		<div id="sp-page">
-			<div ng-if="$root.setHeader" ng-include="'views/menus/header.html'"></div>
+			<div ng-if="$root.setHeader" ng-include="'views/commons/header.html'"></div>
 			<div ng-view></div>
 		</div>
 	</body>
 
 	<script type="text/javascript" src="scripts/vendors/angular/angular.min.js"></script>
+  <script type="text/javascript" src="scripts/vendors/angular/i18n/angular-locale_fr.js"></script>
 	<script type="text/javascript" src="scripts/vendors/angular/angular-route.min.js"></script>
 	<script type="text/javascript" src="scripts/vendors/angular/angular-resource.min.js"></script>
+  <script type="text/javascript" src="scripts/vendors/angular/angular-cookies.min.js"></script>
+  <script type="text/javascript" src="scripts/vendors/angular/angular-sanitize.min.js"></script>
+  
 	<script type="text/javascript" src="scripts/vendors/ng-mobile-menu.min.js"></script>
-	
-	<script type="text/javascript" src="scripts/app.js"></script>
-	<script type="text/javascript" src="scripts/config.js"></script>
-	
-	<!-- Controllers loading -->
-	<script type="text/javascript" src="scripts/controllers/LoginCtrl.js"></script>
 
+  <script type="text/javascript" src="scripts/config.js"></script>  
+  <script type="text/javascript" src="scripts/app.js"></script>
+  
+  <!-- Controllers loading -->
+	<script type="text/javascript" src="scripts/controllers/LoginCtrl.js"></script>
+  <script type="text/javascript" src="scripts/controllers/LogoutCtrl.js"></script>
+  <script type="text/javascript" src="scripts/controllers/PostCtrl.js"></script>
+  <script type="text/javascript" src="scripts/controllers/ProfilCtrl.js"></script>
+  <script type="text/javascript" src="scripts/controllers/MainCtrl.js"></script>
+  
+  <!-- Filters loading -->
+  <script type="text/javascript" src="scripts/filters/eventDate.js"></script>
+  
+	<!-- Services loading -->
+  <script type="text/javascript" src="scripts/services/SessionService.js"></script>
+  <script type="text/javascript" src="scripts/services/HttpInterceptor.js"></script>
+  
 	<script type="text/javascript" src="scripts/providers/api.js"></script>
 </html>

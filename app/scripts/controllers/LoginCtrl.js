@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mobile').controller('LoginCtrl', function ($scope, api){
+angular.module('mobile').controller('LoginCtrl', function ($scope, api, Session, $location){
 	$scope.signin = function () {
 		if ($scope.login !== '' && $scope.password !== '') {
 			var output = {
@@ -8,12 +8,15 @@ angular.module('mobile').controller('LoginCtrl', function ($scope, api){
 				password: $scope.password
 			};
 			api.login(output, function (data){
-				alert(data.id);
-			},
-			function (e) {
-				alert(e.message);
+        Session.setCookie(data.cookie);
+        $location.path('/');
+			},function (e) {
+				alert(e.data.message);
 			});
 		}
+    else {
+      alert('Veuillez entrer un identifiant et un mot de passe')
+    }
 	};
 });
 

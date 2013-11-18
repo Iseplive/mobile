@@ -46,9 +46,17 @@ module.exports = function(grunt) {
         options: {
           sassDir: './app/styles/',
           cssDir: './app/styles/',
-          outputStyle: 'expanded',
+          outputStyle: 'compressed',
           force: true,
           trace: true
+        }
+      }
+    },
+    grunticon: {
+      myIcons: {
+          options: {
+          src: "./app/img/svg/",
+          dest: "./app/img/icons/"
         }
       }
     },
@@ -58,6 +66,14 @@ module.exports = function(grunt) {
           livereload: true
         },
         files: ['./app/styles/**/*.{scss,sass}']
+      },
+      compass: {
+				files: ['app/styles/**/*.{scss,sass}'],
+				tasks: ['compass']
+			},
+      grunticon: {
+        files: ['app/img/svg/**/*.{svg}'],
+				tasks: ['grunticon']
       }
     }
   });
@@ -67,9 +83,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-grunticon');
 
   // this would be run by typing "grunt server" on the command line
-  grunt.registerTask('server', ['compass:dist', 'connect:server', 'watch']);
+  grunt.registerTask('server', ['compass:dist', 'connect:server', 'grunticon', 'watch']);
 
 };
 

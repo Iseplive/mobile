@@ -1,0 +1,92 @@
+#posts
+  background-color: $greyBlue
+  position: absolute
+
+.story
+  position: relative
+  padding-top: 10px
+  margin: 10px
+  background-color: #fff
+  border: 1px solid $lightBlue
+  border-radius: 2px
+  +box-shadow(1px 1px 3px rgba(0,0,0,.5))
+  a
+    text-decoration: underline
+    color: $blue1
+  .head
+    height: 62px
+    p:last-child
+      padding-bottom: 5px
+    > img
+      float: left
+      border: solid 1px $grey2
+      margin: 0 10px 10px 10px
+    .icon-official
+      right: 5px
+      position: absolute
+      width: 23px
+      height: 23px
+    .name
+      color: $blue1
+      font-weight: bold
+    .hint
+      span
+        display: inline-block
+  .contents
+    padding: 10px
+    word-break: break-word
+  .meta
+    background-color: $grey1
+    border-top: solid 1px $grey2
+    font-weight: bold
+    color: $blue2
+    > div
+      display: table-cell
+      padding: 10px
+      vertical-align: middle
+    .count
+      width: 100%
+      span
+        padding-left: 30px
+        margin: 0 5px 0 5px
+        display: inline-block
+        line-height: 25px
+        background-size: 23px
+    .link
+      padding: 0 30px 0 30px
+      background-position: 14px 7px
+      &:active
+        background-color: $grey2
+      &:first-child
+        border-right: 2px solid $grey2
+      &:last-child
+        border-left: 2px solid $grey2
+  .attachment
+    padding: 0 10px 10px 10px
+    > span
+      display: table-cell
+      a
+        padding-left: 25px
+        display: inline-block
+        line-height: 24px
+    img
+      display: table-cell
+      padding-right: 10px
+    .event
+      display: block
+      border: solid 2px $lightBlue
+      margin-bottom: 10px
+      padding: 5px
+      span:first-child
+        padding-left: 25px
+        line-height: 24px
+      span
+        display: block
+      .hint
+        padding-left: 25px
+        margin: 0
+    .video
+      width: 100%
+      display: block
+      .vg-controls
+        height: 40px
