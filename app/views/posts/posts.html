@@ -1,0 +1,83 @@
+<div id="posts">
+  <div ng-repeat="post in posts | orderBy: '-time'">
+    <div class="story">
+      <div class="head">
+        <i class="icon-official" ng-if="post.official" title="Officiel"></i>
+        <a href="{{post.official === '1' ? '#' : '#/students/profil/' + post.username}}">
+          <img width="60" height="60" alt="avatar" ng-src="{{post.avatar_url}}" />
+        </a>
+        <p class="name">
+          <a ng-if="post.official === '1'">
+            {{post.group_name}}
+          </a>
+          <a href="#/students/profil/{{post.username}}" ng-if="post.official === '0'">
+            {{post.firstname}}  {{post.lastname}}
+          </a>
+        </p>
+        <p class="hint" ng-switch="post.category_id">
+          <span ng-switch-when="1">Photos: {{post.attachments_nb_photos}}</span>
+          <span ng-switch-when="2">Vidéos</span>
+          <span ng-switch-when="3">Journaux</span>
+          <span ng-switch-when="10">Gazettes</span>
+          <span ng-switch-when="4">Podcasts</span>
+          <span ng-switch-default></span>
+        </p>
+        <p class="hint">
+          {{post.time * 1000 | date: 'EEE dd MMM à HH:mm'}}
+        </p>
+      </div>
+      <div class="contents" ng-bind-html="post.message"></div>
+
+      <div class="attachment">
+        <span ng-if="post.event" class="event">
+          <span class="icon-calendar bold">{{post.event.title}}</span>
+          <span class="hint">{{post.event.date_start | eventDate : post.event.date_end}}</span>
+        </span>
+        <span ng-repeat="attach in post.attachments">
+          <img ng-if="attach.ext === 'jpg'" width="60" height="60" alt="photo" ng-src="{{attach.thumb}}" />
+
+          <a ng-if="attach.ext === 'pdf'" href="{{attach.url}}" class="icon-pdf" target="_blank">{{attach.name}}</a>
+
+          <div ng-if="attach.ext === 'mp4'" class="video">
+            <video class="videoPlayer" width="100%" controls poster="{{attach.thumb}}">
+              <source ng-src="{{attach.url}}" type="video/mp4" />
+            </video>
+          </div>
+        </span>
+      </div>
+
+      <div class="meta">
+        <div class="icon-like_link link"></div>
+        <div class="count">
+          <span class="icon-comment">{{post.comments ? post.comments.length : 0}}</span>
+          <span class="icon-like" popover-placement="top" popover="{{post.likes.data[0] | postLikers}}">{{post.likes ? post.likes.users[0].length : 0}}</span>
+        </div>
+        <div class="chevron" ng-click="isCollapsed = !isCollapsed">
+          <div class="icon-arrow_next" ng-class="!isCollapsed ? 'open' : ''"></div>
+        </div>
+      </div>
+
+      <div class="meta-content" collapse="isCollapsed">
+        <div class="comments" ng-if="post.comments.length">
+          <div ng-repeat="comment in post.comments">
+            <div class="head">
+              <a href="#/students/profil/{{comment.username}}">
+                <img alt="avatar" width="50px" height="50px" ng-src="{{comment.avatar_url}}"/>
+              </a>
+              <p class="name">
+                <a href="#/students/profil/{{comment.username}}">{{comment.firstname}} {{comment.lastname}}</a>
+              </p>
+              <p class="hint">{{comment.time*1000 | date: 'EEEE dd MMMM à HH:mm'}}</p>
+            </div>
+            <div class="contents" ng-bind-html="comment.message"></div>
+            <div class="icon-like" popover-placement="top" popover="{{comment.like | postLikers}}">{{comment.like ? comment.like.length : 0}}</div>
+          </div>
+        </div>
+        <div class="share">
+          <input type="text" placeholder="Rédigez un commentaire"/>
+          <button ng-click="commentPost()">Publier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

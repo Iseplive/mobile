@@ -5,8 +5,10 @@ angular.module('apiRoute', ['ngResource']).factory('api', ['$resource', 'Config'
     return $resource(Config.apiUri + ':param1/:param2', {}, {
       login:    {              method: 'POST', params:{param1: 'signin'}},
       logout:   {              method: 'GET',  params:{param1: 'logout'}},
-      postList: {cache: false, method: 'GET',  params:{param1: 'posts',   param2: '@page'}, isArray: true},
-      profil:   {cache: true,  method: 'GET',  params:{param1: 'student'}}
+      postList: {cache: false, method: 'GET',  params:{param1: 'posts',    param2: '@page'}, isArray: true},
+      profil:   {cache: true,  method: 'GET',  params:{param1: 'profil'}},
+      students: {cache: true,  method: 'GET',  params:{param1: 'students', param2: '@promo'}},
+      student:  {cache: true,  method: 'GET',  params:{param1: 'student',  param2: '@username'}}
     });
   }]);
 

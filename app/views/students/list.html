@@ -1,0 +1,11 @@
+<div id="students-list" ng-repeat="(key, promo) in promos">
+  <div class="promo">
+    {{key}}
+  </div>
+  <a ng-repeat="student in promo" class="students-head" href="#/students/profil/{{student.username}}">
+    <img ng-src="{{student.avatar_url}}" height="60px" width="60px"/>
+    <p class="name">{{student.firstname}} {{student.lastname}}</p>
+    <p>Promo: {{student.promo}}</p>
+    <p>Numéro: {{student.student_number}}</p>
+  </a>
+</div>

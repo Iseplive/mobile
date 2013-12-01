@@ -5,19 +5,16 @@
 .story
   position: relative
   padding-top: 10px
-  margin: 10px
+  margin: 10px 5px
   background-color: #fff
   border: 1px solid $lightBlue
-  border-radius: 2px
+  +border-radius(2px)
   +box-shadow(1px 1px 3px rgba(0,0,0,.5))
-  a
-    text-decoration: underline
-    color: $blue1
   .head
     height: 62px
     p:last-child
       padding-bottom: 5px
-    > img
+    img
       float: left
       border: solid 1px $grey2
       margin: 0 10px 10px 10px
@@ -27,7 +24,7 @@
       width: 23px
       height: 23px
     .name
-      color: $blue1
+      color: $baseFont
       font-weight: bold
     .hint
       span
@@ -35,6 +32,9 @@
   .contents
     padding: 10px
     word-break: break-word
+    a
+      text-decoration: underline
+      color: $blue1
   .meta
     background-color: $grey1
     border-top: solid 1px $grey2
@@ -46,6 +46,7 @@
       vertical-align: middle
     .count
       width: 100%
+      text-align: center
       span
         padding-left: 30px
         margin: 0 5px 0 5px
@@ -55,12 +56,34 @@
     .link
       padding: 0 30px 0 30px
       background-position: 14px 7px
+      border-right: 2px solid $grey2
       &:active
         background-color: $grey2
-      &:first-child
-        border-right: 2px solid $grey2
-      &:last-child
-        border-left: 2px solid $grey2
+    .chevron
+      padding: 0 20px 0 15px
+      border-left: 2px solid $grey2
+      &:active
+        background-color: $grey2
+    .icon-arrow_next
+      width: 25px
+      height: 31px
+  .meta-content
+    border-top: 2px solid $grey2
+    .comments
+      > div
+        padding-top: 5px
+        background-color: $grey1
+        margin-top: 2px
+      .head
+        height: 52px
+        .name
+          font-weight: normal
+      .icon-like
+        padding-left: 25px
+        line-height: 25px
+        background-size: 20px
+        width: 40px
+        margin: auto
   .attachment
     padding: 0 10px 10px 10px
     > span
@@ -79,7 +102,8 @@
       padding: 5px
       span:first-child
         padding-left: 25px
-        line-height: 24px
+        height: 24px
+        display: inline-block
       span
         display: block
       .hint

@@ -8,7 +8,7 @@
 		<meta name="HandheldFriendly" content="true" />
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1.0, user-scalable = no, maximum-scale=1.0, minimum-scale=1.0">
 
-		<title ng-bind="$root.title">Iseplive</title>
+		<title ng-bind="$root.pageTitle">Iseplive</title>
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
 
 		<link rel="stylesheet" type="text/css" href="styles/main.css">
@@ -21,11 +21,12 @@
 
 	</head>
 	<body>
+    <div spinner></div>
 		<div id="sp-nav">
-			<div ng-if="$root.setMenu" ng-include="'views/commons/left-menu.html'"></div>
+			<page-menu></page-menu>
 		</div>
 		<div id="sp-page">
-			<div ng-if="$root.setHeader" ng-include="'views/commons/header.html'"></div>
+			<page-header></page-header>
 			<div ng-view></div>
 		</div>
 	</body>
@@ -37,7 +38,16 @@
   <script type="text/javascript" src="scripts/vendors/angular/angular-cookies.min.js"></script>
   <script type="text/javascript" src="scripts/vendors/angular/angular-sanitize.min.js"></script>
   
+  <script type="text/javascript" src="scripts/vendors/ui-bootstrap/transition.js"></script>
+  <script type="text/javascript" src="scripts/vendors/ui-bootstrap/bindHtml.js"></script>
+  <script type="text/javascript" src="scripts/vendors/ui-bootstrap/position.js"></script>
+  <script type="text/javascript" src="scripts/vendors/ui-bootstrap/tooltip.js"></script>
+  <script type="text/javascript" src="scripts/vendors/ui-bootstrap/popover.js"></script>
+  <script type="text/javascript" src="scripts/vendors/ui-bootstrap/collapse.js"></script>
+  <link rel="stylesheet" type="text/css" href="scripts/vendors/ui-bootstrap/bootstrap.css">
+  
 	<script type="text/javascript" src="scripts/vendors/ng-mobile-menu.min.js"></script>
+  <script type="text/javascript" src="scripts/vendors/moment-with-langs.min.js"></script>
 
   <script type="text/javascript" src="scripts/config.js"></script>  
   <script type="text/javascript" src="scripts/app.js"></script>
@@ -45,16 +55,27 @@
   <!-- Controllers loading -->
 	<script type="text/javascript" src="scripts/controllers/LoginCtrl.js"></script>
   <script type="text/javascript" src="scripts/controllers/LogoutCtrl.js"></script>
-  <script type="text/javascript" src="scripts/controllers/PostCtrl.js"></script>
-  <script type="text/javascript" src="scripts/controllers/ProfilCtrl.js"></script>
+  <script type="text/javascript" src="scripts/controllers/posts/PostsCtrl.js"></script>
+  <script type="text/javascript" src="scripts/controllers/students/StudentsProfilCtrl.js"></script>
+  <script type="text/javascript" src="scripts/controllers/students/StudentsIndexCtrl.js"></script>
+  <script type="text/javascript" src="scripts/controllers/students/StudentsListCtrl.js"></script>
+  <script type="text/javascript" src="scripts/controllers/students/StudentCtrl.js"></script>
   <script type="text/javascript" src="scripts/controllers/MainCtrl.js"></script>
+  
+  <!-- Directives loading -->
+  <script type="text/javascript" src="scripts/directives/spinner.js"></script>
+  <script type="text/javascript" src="scripts/directives/history.js"></script>
+  <script type="text/javascript" src="scripts/directives/header.js"></script>
+  <script type="text/javascript" src="scripts/directives/menu.js"></script>
   
   <!-- Filters loading -->
   <script type="text/javascript" src="scripts/filters/eventDate.js"></script>
+  <script type="text/javascript" src="scripts/filters/postLikers.js"></script>
   
 	<!-- Services loading -->
   <script type="text/javascript" src="scripts/services/SessionService.js"></script>
   <script type="text/javascript" src="scripts/services/HttpInterceptor.js"></script>
+  <script type="text/javascript" src="scripts/services/HeaderService.js"></script>
   
 	<script type="text/javascript" src="scripts/providers/api.js"></script>
 </html>

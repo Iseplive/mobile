@@ -23,11 +23,12 @@ module.exports = function(grunt) {
         globalstrict: true,
         globals: {
           jQuery: true,
-          services: true,
+          moment: true,
           console: true,
           module: true,
           angular: true,
-          alert: true
+          alert: true,
+          document: true
         }
       }
     },
@@ -37,7 +38,8 @@ module.exports = function(grunt) {
           port: 9000,
           base: 'app',
           hostname: 'localhost',
-          debugInfo: true
+          debugInfo: true,
+          livereload: true
         }
       }
     },
@@ -87,6 +89,5 @@ module.exports = function(grunt) {
 
   // this would be run by typing "grunt server" on the command line
   grunt.registerTask('server', ['compass:dist', 'connect:server', 'grunticon', 'watch']);
-
 };
 

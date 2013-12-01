@@ -1,0 +1,7 @@
+<div id="page" ng-if="header">
+	<div class="header">
+		<div ng-if="menuButton" class="icon-menu trigger" ng-click="$spMenu.toggle()"></div>
+    <div ng-if="backButton" class="icon-arrow_back back" ng-click="backButtonCallback()"></div>
+		<h1 class="title">{{pageTitle}}</h1>
+	</div>
+</div>

@@ -1,5 +1,7 @@
 .icon-annuaire { background-image: url(png\annuaire.png); background-repeat: no-repeat; }
 
+.icon-arrow_back { background-image: url(png\arrow_back.png); background-repeat: no-repeat; }
+
 .icon-arrow_next { background-image: url(png\arrow_next.png); background-repeat: no-repeat; }
 
 .icon-assoce { background-image: url(png\assoce.png); background-repeat: no-repeat; }
@@ -17,6 +19,8 @@
 .icon-logout { background-image: url(png\logout.png); background-repeat: no-repeat; }
 
 .icon-media { background-image: url(png\media.png); background-repeat: no-repeat; }
+
+.icon-menu { background-image: url(png\menu.png); background-repeat: no-repeat; }
 
 .icon-official { background-image: url(png\official.png); background-repeat: no-repeat; }
 

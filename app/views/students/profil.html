@@ -1,0 +1,69 @@
+<div id="profil">
+  <div class="students-head">
+    <img ng-src="{{profil.avatar_url}}" alt="avatar" width="60px" height="60px"/>
+    <p class="name">
+      {{profil.firstname}} {{profil.lastname}}
+    </p>
+    <p class="hint">
+      <strong>Promo:</strong> {{profil.promo}}
+    </p>
+    <p class="hint">
+      <strong>Numéro:</strong> {{profil.student_number}}
+    </p>
+  </div>
+  <div class="content">
+    <div>
+      <span>Adresse email</span>
+      {{profil.mail}}
+    </div>
+    <p class="input-delimiter"></p>
+    
+    <div>
+      <span>Adresse MSN</span>
+      {{profil.msn}}
+    </div>
+    <p class="input-delimiter"></p>
+    
+    <div>
+      <span>Adresse Jabber</span>
+      {{profil.jabber}}
+    </div>
+    <p class="input-delimiter"></p>
+    
+    <div>
+      <span>Adresse postale</span>
+      {{profil.address}}
+    </div>
+    <p class="input-delimiter"></p>
+    
+    <div>
+      <span>Code postal</span>
+      {{profil.zipcode}}
+    </div>
+    <p class="input-delimiter"></p>
+    
+    <div>
+      <span>Ville</span>
+      {{profil.city}}
+    </div>
+    <p class="input-delimiter"></p>
+    
+    <div>
+      <span>Tél portable</span>
+      {{profil.cellphone}}
+    </div>
+    <p class="input-delimiter"></p>
+    
+    <div>
+      <span>Tél fixe</span>
+      {{profil.phone}}
+    </div>
+    <p class="input-delimiter"></p>
+    
+    <div>
+      <span>Date de naissance</span>
+      {{profil.birthday | date: 'dd/MM/yyyy'}}
+    </div>
+    <p class="input-delimiter"></p>
+  </div>
+</div>
