@@ -1,11 +1,7 @@
 'use strict';
 
-angular.module('mobile').controller('LogoutCtrl', function (Session, $rootScope, HeaderService){
+angular.module('mobile').controller('LogoutCtrl', function (Session){
 	Session.clearSession();
-  
-  HeaderService.reset();
-  HeaderService.setHeader(false);
-  $rootScope.$broadcast('refreshHeader');
 });
 
 

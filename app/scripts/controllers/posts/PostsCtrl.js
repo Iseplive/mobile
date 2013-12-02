@@ -1,12 +1,8 @@
 'use strict';
 
-angular.module('mobile').controller('PostsCtrl', function ($scope, HeaderService, $rootScope, posts){
+angular.module('mobile').controller('PostsCtrl', function ($scope, posts){
   $scope.posts       = posts;
   $scope.isCollapsed = true;
-  
-  HeaderService.reset();
-  HeaderService.setTitle($rootScope.pageTitle);
-  $rootScope.$broadcast('refreshHeader');
 });
 
 

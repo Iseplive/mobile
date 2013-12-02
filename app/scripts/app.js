@@ -74,15 +74,20 @@ angular.module('mobile', ['ngRoute', 'leftMenu', 'apiRoute', 'ngCookies', 'ngSan
     'http://storage.iseplive.localhost/'
   ]);
 })
-.run(function($rootScope, Session){
-    $rootScope.$on('$routeChangeSuccess',
-      function(event, next) {
-        if (next.isPublic === undefined && !Session.isAuthenticated()) {
-          Session.clearSession();
-        }
-        else {
-          $rootScope.username = Session.getUsername();
-        }
-        $rootScope.pageTitle = next.pageTitle;
-      });
+.run(function($rootScope, Session, HeaderService){
+  $rootScope.$on('$routeChangeSuccess', function(event, next) {
+    if (next.isPublic === undefined && Session.isAuthenticated() === undefined) {
+      Session.clearSession();
+    }
+    else {
+      $rootScope.username = Session.getUsername();
+    }
+    $rootScope.pageTitle = next.pageTitle;
+    HeaderService.reset();
+    HeaderService.pageTitle = next.pageTitle;
   });
+
+  $rootScope.$on('$viewContentLoaded', function() {
+    $rootScope.$broadcast('refreshHeader');
+  });
+});

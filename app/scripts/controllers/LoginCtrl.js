@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mobile').controller('LoginCtrl', function ($scope, api, Session, $location, $rootScope, HeaderService){
+angular.module('mobile').controller('LoginCtrl', function ($scope, api, Session, $location, HeaderService){
 	$scope.signin = function () {
 		if ($scope.login !== '' && $scope.password !== '') {
 			var output = {
@@ -17,10 +17,8 @@ angular.module('mobile').controller('LoginCtrl', function ($scope, api, Session,
     else {
       alert('Veuillez entrer un identifiant et un mot de passe');
     }
-    
-    HeaderService.reset();
-    HeaderService.setHeader(false);
-    $rootScope.$broadcast('refreshHeader');
 	};
+
+  HeaderService.header = false;
 });
 
