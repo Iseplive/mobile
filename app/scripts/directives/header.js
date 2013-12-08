@@ -4,7 +4,6 @@ angular.module('mobile').directive('pageHeader',function (HeaderService) {
   return {
     restrict: 'E',
     replace: true,
-    scope: true,
     templateUrl: 'views/directives/header.html',
     link: function (scope) {
       scope.$on('refreshHeader', function() {

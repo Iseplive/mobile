@@ -3,11 +3,11 @@
     <div class="story">
       <div class="head">
         <i class="icon-official" ng-if="post.official" title="Officiel"></i>
-        <a href="{{post.official === '1' ? '#' : '#/students/profil/' + post.username}}">
+        <a href="{{post.official === '1' ? '#/group/' + post.group_url : '#/students/profil/' + post.username}}">
           <img width="60" height="60" alt="avatar" ng-src="{{post.avatar_url}}" />
         </a>
         <p class="name">
-          <a ng-if="post.official === '1'">
+          <a href="#/group/{{post.group_url}}" ng-if="post.official === '1'">
             {{post.group_name}}
           </a>
           <a href="#/students/profil/{{post.username}}" ng-if="post.official === '0'">

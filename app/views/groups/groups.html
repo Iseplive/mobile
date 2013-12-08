@@ -1,0 +1,19 @@
+<div id="groups">
+  <div ng-repeat="group in groups" class="ligne">
+    <a class="head" href="#/group/{{group.url_name}}">
+      <img alt="avatar" ng-src="{{group.avatar_url}}" width="60px" height="60px"/>
+      <p class="name">{{group.name}}</p>
+    </a>
+    <div class="meta" ng-click="isCollapsed = !isCollapsed">
+      <div class="text">
+        {{isCollapsed ? 'Lire' : 'Masquer'}} la déscription
+      </div>
+      <div class="chevron">
+        <div class="icon-arrow_next" ng-class="!isCollapsed ? 'open' : ''"></div>
+      </div>
+    </div>
+    <div class="content" collapse="isCollapsed" ng-click="isCollapsed = true">
+      <p ng-bind-html="group.description"></p>
+    </div>
+  </div>
+</div>

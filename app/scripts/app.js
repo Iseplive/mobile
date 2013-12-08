@@ -19,11 +19,25 @@ angular.module('mobile', ['ngRoute', 'leftMenu', 'apiRoute', 'ngCookies', 'ngSan
         }]
       }
     })
-		.when('/login', {
-			templateUrl: 'views/public/login.html',
-			controller: 'LoginCtrl',
-			pageTitle: 'Login',
-      isPublic: true,
+    .when('/post/:id', {
+			templateUrl: 'views/posts/post.html',
+      controller: 'PostCtrl',
+      pageTitle: 'Publication',
+      resolve:{
+        post: ['api', '$route', function (api, $route) {
+          return api.post({param2: $route.current.params.id}).$promise;
+        }]
+      }
+    })
+    .when('/media', {
+			templateUrl: 'views/posts/media.html',
+      controller: 'MediaCtrl',
+      pageTitle: 'Média',
+      resolve:{
+        media: ['api', function (api) {
+          return api.media().$promise;
+        }]
+      }
     })
     .when('/students/profil', {
 			templateUrl: 'views/students/profil.html',
@@ -58,13 +72,38 @@ angular.module('mobile', ['ngRoute', 'leftMenu', 'apiRoute', 'ngCookies', 'ngSan
     .when('/students/index', {
 			templateUrl: 'views/students/index.html',
       controller: 'StudentsIndexCtrl',
-      pageTitle: 'Annuaire',
+      pageTitle: 'Annuaire'
+    })
+    .when('/groups', {
+			templateUrl: 'views/groups/groups.html',
+      controller: 'GroupsListCtrl',
+      pageTitle: 'Associations',
+      resolve:{
+        groups: ['api', function (api) {
+          return api.groups().$promise;
+        }]
+      }
+    })
+    .when('/group/:name', {
+			templateUrl: 'views/groups/group.html',
+      controller: 'GroupCtrl',
+      pageTitle: 'Association',
+      resolve:{
+        group: ['api', '$route', function (api, $route) {
+          return api.group({param2: $route.current.params.name}).$promise;
+        }]
+      }
     })
     .when('/logout', {
       templateUrl: 'views/public/login.html',
-			controller: 'LogoutCtrl',
+			controller: 'LogoutCtrl'
     })
-
+    .when('/login', {
+			templateUrl: 'views/public/login.html',
+			controller: 'LoginCtrl',
+			pageTitle: 'Login',
+      isPublic: true
+    })
     .otherwise({redirectTo: '/'});
   }
 ])

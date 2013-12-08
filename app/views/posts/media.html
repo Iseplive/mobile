@@ -1,0 +1,8 @@
+<div id="media">
+  <div ng-repeat="item in media" class="ligne">
+    <div class="year" ng-if="(item.time*1000 | date: 'yyyy') !== (media[$index-1].time*1000 | date: 'yyyy')">{{item.time*1000 | date: 'yyyy'}}</div>
+    <a href="#/post/{{item.id}}" class="post" ng-class="setIcon(item.category_id)">
+      <p>{{item.message}}</p>
+    </a>
+  </div>
+</div>

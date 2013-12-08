@@ -1,0 +1,39 @@
+#groups, #group
+  .ligne
+    border-bottom: solid 1px $grey2
+  .head
+    display: table
+    height: 65px
+    padding-top: 5px
+    img
+      margin: 0 10px 0 10px
+      display: table-cell
+    .name
+      vertical-align: middle
+      display: table-cell
+      color: $baseFont
+      font-weight: bold
+      width: 100%
+    &:active
+      background-color: $grey1
+  .content
+    overflow: hidden
+    p
+      margin: 10px 10px
+    a
+      text-decoration: underline
+      color: $blue1
+  .internal-link
+    padding-left: 10px
+
+#group
+  .members
+    padding: 10px
+    p
+      font-weight: bold
+      color: $baseFont
+    .title
+      text-decoration: none
+  a
+    display: block
+    line-height: 24px

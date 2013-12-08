@@ -1,15 +1,14 @@
-#posts
+#posts, #post
   background-color: $greyBlue
   position: absolute
-
-.story
-  position: relative
-  padding-top: 10px
-  margin: 10px 5px
-  background-color: #fff
-  border: 1px solid $lightBlue
-  +border-radius(2px)
-  +box-shadow(1px 1px 3px rgba(0,0,0,.5))
+  .story
+    position: relative
+    padding-top: 10px
+    margin: 10px 5px
+    background-color: #fff
+    border: 1px solid $lightBlue
+    +border-radius(2px)
+    +box-shadow(1px 1px 3px rgba(0,0,0,.5))
   .head
     height: 62px
     p:last-child
@@ -35,38 +34,6 @@
     a
       text-decoration: underline
       color: $blue1
-  .meta
-    background-color: $grey1
-    border-top: solid 1px $grey2
-    font-weight: bold
-    color: $blue2
-    > div
-      display: table-cell
-      padding: 10px
-      vertical-align: middle
-    .count
-      width: 100%
-      text-align: center
-      span
-        padding-left: 30px
-        margin: 0 5px 0 5px
-        display: inline-block
-        line-height: 25px
-        background-size: 23px
-    .link
-      padding: 0 30px 0 30px
-      background-position: 14px 7px
-      border-right: 2px solid $grey2
-      &:active
-        background-color: $grey2
-    .chevron
-      padding: 0 20px 0 15px
-      border-left: 2px solid $grey2
-      &:active
-        background-color: $grey2
-    .icon-arrow_next
-      width: 25px
-      height: 31px
   .meta-content
     border-top: 2px solid $grey2
     .comments
@@ -114,3 +81,38 @@
       display: block
       .vg-controls
         height: 40px
+#media
+  .year
+    height: 19px
+    font-size: 16px
+    text-align: center
+    color: $baseFont
+    font-weight: bold
+    padding-top: 12px
+    padding-bottom: 12px
+    border-bottom: solid 1px $lightBlue
+    background-color: $greyBlue
+    margin-top: -5px
+    margin-bottom: 5px
+  .ligne
+    border-bottom: solid 1px $lightBlue
+    padding: 5px 0 5px 0
+    .post
+      min-height: 30px
+      padding: 0 10px 0 40px
+      margin-left: 5px
+      display: table
+      width: 100%
+      p
+        display: table-cell
+        width: 100%
+        vertical-align: middle
+    &:active
+      background-color: $grey1
+
+#post
+  background: none
+  position: relative
+  padding-top: 10px
+  .meta-content
+    border: none

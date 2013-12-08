@@ -1,0 +1,17 @@
+<div id="group">
+  <div class="head">
+    <img alt="avatar" ng-src="{{group.avatar_url}}" width="60px" height="60px"/>
+    <p class="name">{{group.name}}</p>
+  </div>
+  <div class="content">
+    <p ng-bind-html="group.description"></p>
+  </div>
+  <div class="members">
+    <p>
+      Membres:
+    </p>
+    <a ng-repeat="member in group.members" class="link" href="#/students/profil/{{member.username}}">
+      {{member.firstname}} {{member.lastname}} (<span class="title">{{member.title}}</span>)
+    </a>
+  </div>
+</div>
