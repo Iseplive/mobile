@@ -94,6 +94,10 @@ angular.module('mobile', ['ngRoute', 'leftMenu', 'apiRoute', 'ngCookies', 'ngSan
         }]
       }
     })
+    .when('/utils', {
+			templateUrl: 'views/utils.html',
+			pageTitle: 'Liens utiles',
+    })
     .when('/logout', {
       templateUrl: 'views/public/login.html',
 			controller: 'LogoutCtrl'

@@ -39,24 +39,31 @@
           <source ng-src="{{attach.url}}" type="video/mp4" />
         </video>
       </div>
+      
+      <div ng-if="attach.ext === 'mp3'">
+        <audio controls>
+          <source ng-src="{{attach.url}}" />
+          <p class="warning">Le format *.mp3 n'est pas pris en charge par votre navigateur</p>
+        </audio>
+      </div>
     </span>
   </div>
   
   <div class="attachment" ng-if="post.category_id === '1'">
-    <galleria attachments="post.attachments"></galleria>
+    <div id="galleria" height="380px" galleria currentPhoto="$parent.currentphoto" attachments="post.attachments"></div>
   </div>
   
   <div class="meta">
     <div class="icon-like_link link"></div>
-    <div class="count">
+    <div class="count" ng-if="post.category_id !== '1'">
       <span class="icon-comment">{{post.comments ? post.comments.length : 0}}</span>
       <span class="icon-like" popover-placement="top" popover="{{post.likes.data[0] | postLikers}}">{{post.likes ? post.likes.users[0].length : 0}}</span>
     </div>
   </div>
   
   <div class="meta-content">
-    <div class="comments" ng-if="post.comments.length">
-      <div ng-repeat="comment in post.comments">
+    <div class="comments" ng-if="post.comments.length" >
+      <div ng-repeat="comment in post.comments" category="{{post.category_id}}" ng-class="post.category_id !== '1' || comment.attachment_id == currentphoto ? 'show' : 'hide'">
         <div class="head">
           <a href="#/students/profil/{{comment.username}}">
             <img alt="avatar" width="50px" height="50px" ng-src="{{comment.avatar_url}}"/>
@@ -71,8 +78,8 @@
       </div>
     </div>
     <div class="share">
-      <input type="text" placeholder="Rédigez un commentaire"/>
-      <button ng-click="commentPost()">Publier</button>
+      <textarea placeholder="Rédigez un commentaire" cols="550" rows="5"></textarea>
+      <div ng-click="commentPost()">Publier</div>
     </div>
   </div>
 </div>

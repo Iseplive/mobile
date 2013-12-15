@@ -1,11 +1,16 @@
+<div class="searchBar">
+  <input type="text" placeholder="Nom, Prénom, Promo, Numéro" ng-model="searchTerm"/>
+  <div class="icon-cross_g" ng-click="searchTerm = ''"></div>
+</div>
 <div id="students-list" ng-repeat="(key, promo) in promos">
   <div class="promo">
     {{key}}
   </div>
-  <a ng-repeat="student in promo" class="students-head" href="#/students/profil/{{student.username}}">
+  <a ng-repeat="student in filtered =(promo | searchUser: searchTerm)" class="students-head" href="#/students/profil/{{student.username}}">
     <img ng-src="{{student.avatar_url}}" height="60px" width="60px"/>
     <p class="name">{{student.firstname}} {{student.lastname}}</p>
     <p>Promo: {{student.promo}}</p>
     <p>Numéro: {{student.student_number}}</p>
   </a>
+  <div ng-if="!filtered.length" class="no-data">La recherche n'a donné aucun résultat</div>
 </div>

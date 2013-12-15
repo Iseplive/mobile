@@ -1,8 +1,13 @@
+<div class="searchBar">
+  <input type="text" placeholder="Titre, Catégorie, Année" ng-model="searchTerm"/>
+  <div class="icon-cross_g" ng-click="searchTerm = ''"></div>
+</div>
 <div id="media">
-  <div ng-repeat="item in media" class="ligne">
-    <div class="year" ng-if="(item.time*1000 | date: 'yyyy') !== (media[$index-1].time*1000 | date: 'yyyy')">{{item.time*1000 | date: 'yyyy'}}</div>
+  <div ng-repeat="item in filtered =(media | searchMedia: searchTerm)" class="ligne">
+    <div class="year" ng-if="(item.time*1000 | date: 'yyyy') !== (filtered[$index-1].time*1000 | date: 'yyyy')">{{item.time*1000 | date: 'yyyy'}}</div>
     <a href="#/post/{{item.id}}" class="post" ng-class="setIcon(item.category_id)">
-      <p>{{item.message}}</p>
+      <p ng-bind-html="item.message"></p>
     </a>
   </div>
+  <div ng-if="!filtered.length" class="no-data">La recherche n'a donné aucun résultat</div>
 </div>

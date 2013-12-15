@@ -28,7 +28,7 @@
       </div>
       <div class="contents" ng-bind-html="post.message"></div>
 
-      <div class="attachment">
+      <div class="attachment" ng-click="sendToSinglePost(post)">
         <span ng-if="post.event" class="event">
           <span class="icon-calendar bold">{{post.event.title}}</span>
           <span class="hint">{{post.event.date_start | eventDate : post.event.date_end}}</span>
@@ -43,7 +43,15 @@
               <source ng-src="{{attach.url}}" type="video/mp4" />
             </video>
           </div>
+
+          <div ng-if="attach.ext === 'mp3'">
+            <audio controls>
+              <source ng-src="{{attach.url}}" />
+              <p class="warning">Le format *.mp3 n'est pas pris en charge par votre navigateur</p>
+            </audio>
+          </div>
         </span>
+        <a ng-if="post.category_id === '1'" class="link">Voir toutes les photos</a>
       </div>
 
       <div class="meta">
@@ -74,8 +82,8 @@
           </div>
         </div>
         <div class="share">
-          <input type="text" placeholder="Rédigez un commentaire"/>
-          <button ng-click="commentPost()">Publier</button>
+          <textarea placeholder="Rédigez un commentaire" cols="550" rows="5"></textarea>
+          <div ng-click="commentPost()">Publier</div>
         </div>
       </div>
     </div>
